@@ -1,0 +1,10 @@
+table{
+    border-collapse: collapse;
+}
+table th, td{
+    border: 2px solid green;
+}
+h2{
+    color: aqua;
+    text-decoration: underline;
+}

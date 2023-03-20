@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹프레임워크</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- <header>
+      <a href="#">Home</a>
+      <a href="#">Blog</a>
+      <a href="#">About Me</a>
+    </header>
+
+    <h1>About Me</h1>
+    <h2>서울사람 이성용입니다.</h2>
+    <p>HTML,CSS,JS,Django로 재미있는 웹사이트 만드는 것을 좋아합니다.</p>
+    <a href="#">첫 화면으로 가기</a>
+    <img src="./images/Koala.jpg" alt="" width="300" height="300" />
+     -->
+
+    <script>
+      let AllMember = new Array();
+      let index = 1;
+      function registration() {
+        let info = new Date().getFullYear().toString() + index;
+        index++;
+        let name = document.getElementById("inna").value;
+        let image = document.getElementById("img").value;
+        let ipath = "./images/" + image + ".jpg";
+        let t = new Member(info, name, image);
+        AllMember.push(t);
+        // document.createElement("tbody")
+        let re =
+          "<tr><td>" +
+          info +
+          "</td><td>" +
+          name +
+          '</td><td><img src="' +
+          ipath +
+          '"width="100" height="100"></td></tr>';
+        document.getElementById("tbody").innerHTML += re;
+      }
+
+      function Click() {
+        for (let i = 0; i < AllMember.length; i++) {
+          
+          let a = document.getElementById("list");
+          a.style.border="2px solid red";
+          a.innerHTML="";
+          a.innerHTML=AllMember[i];
+        }
+      }
+
+      window.onload = function () {
+        let a = document.getElementById("reg");
+        a.addEventListener("click", registration);
+      };
+      // function Member(info, name, image) {
+      //   this.info = info;
+      //   this.name = name;
+      //   this.image = image;
+      // } // let a= new Member(); -> ES5
+
+      class Member {
+        constructor(info, name, image) {
+          this.info = info;
+          this.name = name;
+          this.image = image;
+        }
+        toString=function(){
+          let str="";
+          str+="info:"+this.info+" name:"+this.name + " image:"+this.image +"<br>";
+          return str;
+        }
+      } // -> ES6
+    </script>
+
+    <h1>회원가입 정보</h1>
+    <form action="login.php" method="GET">
+      <div>이름: <input type="text" name="na" id="inna" /></div>
+      <div>
+        대표사진:
+        <select name="" id="img">
+          <option value="Desert">Desert</option>
+          <option value="Jellyfish">Jellyfish</option>
+          <option value="Koala">Koala</option>
+          <option value="Lighthosue">Lighthosue</option>
+          <option value="Penguin">Penguin</option>
+          <option value="Tulips">Tulips</option>
+        </select>
+      </div>
+      <input type="button" value="가입하기" id="reg" />
+    </form>
+    <hr />
+    <h2>회원목록</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>회원정보</th>
+          <th>이름</th>
+          <th>이미지</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <hr />
+    <button onclick="Click()">회원목록 출력하기</button><br />
+    <div id="list"></div>
+    <hr />
+    <a href="#">구글 접속하기</a>
+  </body>
+</html>

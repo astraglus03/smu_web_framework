@@ -1,0 +1,13 @@
+nav{
+    background-color: yellowgreen;
+    font-size: 150%;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items: center;
+    
+}
+nav a{
+    color: rgb(25, 0, 255);
+    text-decoration: none;
+}
